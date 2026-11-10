@@ -1,0 +1,9 @@
+category_code,viewed,carted,purchased,view_to_cart_pct,cart_to_purchase_pct,overall_conversion_pct
+electronics.smartphone,5415,973,503,17.97,51.7,9.29
+electronics.audio.headphone,5595,917,477,16.39,52.02,8.53
+kids.toys,5571,907,469,16.28,51.71,8.42
+construction.tools.drill,5559,677,371,12.18,54.8,6.67
+apparel.shoes,5588,762,279,13.64,36.61,4.99
+computers.notebook,5605,509,175,9.08,34.38,3.12
+appliances.kitchen.refrigerators,5486,451,170,8.22,37.69,3.1
+furniture.living_room.sofa,5375,360,93,6.7,25.83,1.73

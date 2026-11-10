@@ -1,0 +1,5 @@
+price_band,carted_sessions,abandoned,abandonment_pct,explicitly_removed
+1. Under $100,1592,757,47.55,141
+2. $100-299,1824,987,54.11,186
+3. $300-799,907,479,52.81,83
+4. $800+,1233,796,64.56,152
