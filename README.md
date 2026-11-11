@@ -40,6 +40,8 @@ pip install -r requirements.txt
 python src/make_sample_data.py          # creates data/events_sample.csv
 python src/run_analysis.py              # loads into SQLite, runs /sql, writes /output
 
+python test_funnel.py                   # sanity-check the funnel SQL
+
 # real data (cap rows if your machine is small):
 python src/run_analysis.py --csv data/2019-Nov.csv --max-rows 5000000
 ```
@@ -53,9 +55,11 @@ sql/
   02_funnel_by_category.sql       funnel split by product category
   03_cart_abandonment_by_price.sql abandonment by carted-item price band
   04_engagement_vs_cart.sql       views per session vs cart / purchase rate
+  05_conversion_by_hour.sql       cart and purchase rate by hour the session started
 src/
   make_sample_data.py             sample generator (REES46 schema)
   run_analysis.py                 load -> query -> chart -> Excel
+test_funnel.py                    checks the SQL against a tiny hand-built event log
 output/
   funnel.png                      funnel chart
   funnel_report.xlsx              one sheet per query + Excel funnel chart
@@ -67,4 +71,5 @@ output/
 - **Unit of analysis is the session** (`user_session`), the standard choice for on-site funnels. User-level funnels would hide repeat visits.
 - **The funnel is strict:** a session counts at step N only if it also reached steps 1…N−1. A session that carts after a single product view doesn't count as "engaged", so step 3 is a bit lower than the raw cart count.
 - `LAG()` and `FIRST_VALUE()` window functions compute step-to-step and top-of-funnel conversion in one query.
+- **Hour of day:** the sample spreads sessions evenly across the day, so `05_conversion_by_hour` comes out flat. On the real REES46 data, use it to time cart-reminder emails and campaigns.
 - **Power BI:** load `output/01_funnel_overall.csv` and use the built-in Funnel visual (Category = `step`, Values = `sessions`).
