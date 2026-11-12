@@ -56,6 +56,7 @@ sql/
   03_cart_abandonment_by_price.sql abandonment by carted-item price band
   04_engagement_vs_cart.sql       views per session vs cart / purchase rate
   05_conversion_by_hour.sql       cart and purchase rate by hour the session started
+  06_cart_abandonment_by_brand.sql brands with the most carted-but-not-bought items
 src/
   make_sample_data.py             sample generator (REES46 schema)
   run_analysis.py                 load -> query -> chart -> Excel

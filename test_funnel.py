@@ -62,6 +62,13 @@ def test_conversion_by_hour():
     assert df["sessions"].sum() == 4
 
 
+def test_cart_abandonment_by_brand():
+    sql = (SQL / "06_cart_abandonment_by_brand.sql").read_text().replace(">= 20", ">= 1")
+    df = pd.read_sql_query(sql, make_db())
+    assert df.loc[0, "brand"] == "lego"
+    assert (df.loc[0, "carted_items"], df.loc[0, "abandoned_items"]) == (2, 1)
+
+
 if __name__ == "__main__":
     for name, fn in list(globals().items()):
         if name.startswith("test_"):
