@@ -57,6 +57,7 @@ sql/
   04_engagement_vs_cart.sql       views per session vs cart / purchase rate
   05_conversion_by_hour.sql       cart and purchase rate by hour the session started
   06_cart_abandonment_by_brand.sql brands with the most carted-but-not-bought items
+  07_kpi_summary.sql              one-row headline KPIs (users, conversion, abandonment, revenue, AOV)
 src/
   make_sample_data.py             sample generator (REES46 schema)
   run_analysis.py                 load -> query -> chart -> Excel

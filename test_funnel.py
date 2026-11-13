@@ -69,6 +69,15 @@ def test_cart_abandonment_by_brand():
     assert (df.loc[0, "carted_items"], df.loc[0, "abandoned_items"]) == (2, 1)
 
 
+def test_kpi_summary():
+    df = pd.read_sql_query((SQL / "07_kpi_summary.sql").read_text(), make_db())
+    row = df.iloc[0]
+    assert (row.users, row.sessions) == (1, 4)
+    assert row.session_conversion_pct == 25.0
+    assert row.cart_abandonment_pct == 50.0
+    assert (row.revenue, row.avg_order_value) == (50.0, 50.0)
+
+
 if __name__ == "__main__":
     for name, fn in list(globals().items()):
         if name.startswith("test_"):
